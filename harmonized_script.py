@@ -95,3 +95,20 @@ def populate_physicians():
                 'md_fax': md_fax
             }
         )
+
+
+def populate_physician_x_institution():
+    for _ in range(0, 20000):
+        harmonized_physician, md_phone, md_email, md_fax = random.choice(
+            physician_ids).values()
+        harmonized_institution = random.choice(institution_ids)
+        pxi_dict = {
+            'harmonized_physician': harmonized_physician,
+            'harmonized_institution': harmonized_institution,
+            'md_phone': md_phone,
+            'md_email': md_email,
+            'md_fax': md_fax,
+            'curated': 'curated',
+        }
+        ids = create_physician_x_institution(**pxi_dict)
+        print(f"Physician/Institution id # {ids}")
