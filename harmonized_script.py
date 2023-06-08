@@ -72,3 +72,26 @@ def populate_institutions():
             print(f"Institution id # {ids}")
             institution_ids.append(str(ids))
 
+
+def populate_physicians():
+    for _ in range(0, 10000):
+        first_name = random.choice(first_names_list)
+        last_name = random.choice(last_names_list)
+        physician_dict = {
+            'md_firstname_har': first_name,
+            'md_lastname_har': last_name,
+            'curated': 'curated',
+        }
+        md_phone = f"{random.randrange(100, 999)}-{random.randrange(100, 999)}-{random.randrange(1000, 9999)}"
+        md_fax = f"{random.randrange(100, 999)}-{random.randrange(100, 999)}-{random.randrange(1000, 9999)}"
+        md_email = f"{first_name.lower()}.{last_name.lower()}@gmail.com"
+        ids = create_harmonized_physician(**physician_dict)
+        print(f"Physician id # {ids}")
+        physician_ids.append(
+            {
+                'harmonized_physician': str(ids),
+                'md_phone': md_phone,
+                'md_email': md_email,
+                'md_fax': md_fax
+            }
+        )
